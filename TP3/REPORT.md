@@ -15,6 +15,8 @@ I worked through 5 exercises covering fundamental OpenMP concepts:
 
 **What I did:** Created a simple OpenMP program to display thread information.
 
+**Code:** [hello_world.c](EXERCISE1/hello_world.c)
+
 **Implementation:**
 - Used `#pragma omp parallel` to create parallel region
 - Each thread prints its rank using `omp_get_thread_num()`
@@ -25,6 +27,8 @@ I worked through 5 exercises covering fundamental OpenMP concepts:
 ## Exercise 2: Pi Calculation (Manual Parallelization)
 
 **What I did:** Parallelized Pi calculation using numerical integration without `parallel for`.
+
+**Code:** [pi_parallel.c](EXERCISE2/pi_parallel.c)
 
 **Approach:**
 - Manually distributed loop iterations across threads
@@ -39,6 +43,8 @@ I worked through 5 exercises covering fundamental OpenMP concepts:
 ## Exercise 3: PI Calculation (Automatic Parallelization)
 
 **What I did:** Simplified Exercise 2 by adding just ONE line: `#pragma omp parallel for`.
+
+**Code:** [pi_loop.c](EXERCISE3/pi_loop.c)
 
 **The magic line:**
 ```c
@@ -56,12 +62,17 @@ I worked through 5 exercises covering fundamental OpenMP concepts:
 
 **What I did:** Parallelized matrix multiplication and tested different scheduling strategies.
 
+**Code:** [matrix_mult.c](EXERCISE4/matrix_mult.c), [matrix_mult_sched.c](EXERCISE4/matrix_mult_sched.c)
+
 **Implementation:**
 - Used `collapse(2)` to parallelize both outer loops
 - Tested STATIC, DYNAMIC, and GUIDED scheduling
 - Measured speedup and efficiency with 1-16 threads
 
 **Results (1000×1000 matrix):**
+
+![Matrix Multiplication Speedup](EXERCISE4/speedup_efficiency.png)
+
 ```
 Threads | Time(s) | Speedup | Efficiency
 --------|---------|---------|------------
@@ -86,12 +97,17 @@ Threads | Time(s) | Speedup | Efficiency
 
 **What I did:** Parallelized the Jacobi method for solving linear systems.
 
+**Code:** [jacobi_parallel.c](EXERCISE5/jacobi_parallel.c), [jacobi_sequential.c](EXERCISE5/jacobi_sequential.c)
+
 **Implementation:**
 - Parallelized the main computation loop
 - Used `reduction(max:absmax)` for convergence check
 - Tested with two problem sizes: N=120 and N=5000
 
 **The surprise - Results for N=120:**
+
+![Jacobi N=120 Performance](EXERCISE5/jacobi_complete_analysis.png)
+
 ```
 Threads | Time(ms) | Speedup | Efficiency
 --------|----------|---------|------------
@@ -166,8 +182,9 @@ export OMP_NUM_THREADS=4
 ## Performance Analysis Scripts
 
 Several PowerShell and Python scripts are included for performance analysis:
-- `analyze_*.ps1` - Run benchmarks with different thread counts
-- `plot_*.py` - Generate speedup and efficiency graphs
+- [analyze_speedup.ps1](EXERCISE4/analyze_speedup.ps1) - Matrix multiplication benchmarks
+- [analyze_jacobi.ps1](EXERCISE5/analyze_jacobi.ps1) - Jacobi method benchmarks
+- [plot_speedup.py](EXERCISE4/plot_speedup.py) - Generate speedup and efficiency graphs
 
 
 ---

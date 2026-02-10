@@ -13,7 +13,7 @@ I implemented a program to study how memory access patterns (stride) affect perf
 
 ### Implementation
 
-I created [exercice1.c](exercice1.c) that accesses array elements with varying strides (1 to 20). A stride of 1 means consecutive access, while larger strides skip elements, causing cache misses.
+I created [exercice1.c](exercice01/exercice1.c) that accesses array elements with varying strides (1 to 20). A stride of 1 means consecutive access, while larger strides skip elements, causing cache misses.
 
 ```c
 for (int i = 0; i < N * i_stride; i += i_stride)
@@ -101,7 +101,7 @@ I implemented block matrix multiplication to improve cache locality by dividing 
 
 ### Implementation
 
-I created [mxm_bloc.c](exercice02/mxm_bloc.c) with 6 nested loops (3 for blocks, 3 for elements):
+I created [mxm_bloc.c](exercice03/mxm_bloc.c) with 6 nested loops (3 for blocks, 3 for elements):
 
 ```c
 for (int ii = 0; ii < n; ii += block_size) {
@@ -234,8 +234,8 @@ This exercise involves running the High-Performance Linpack (HPL) benchmark on H
 
 ## References
 
-- [Exercise 1 Code](exercice1/)
-- [Exercise 2 Coden](exercice02/mxm.c)
-- [Exercise 3 Code](exercice02/mxm_bloc.c)
+- [Exercise 1 Code](exercice01/)
+- [Exercise 2 Code](exercice02/mxm.c)
+- [Exercise 3 Code](exercice03/mxm_bloc.c)
 - [Exercise 4 Code](exercice04/)
 - Valgrind Documentation: https://valgrind.org/docs/manual/
