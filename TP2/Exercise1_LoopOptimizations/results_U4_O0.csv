@@ -1,0 +1,5 @@
+Type,UnrollFactor,Time_ms
+double,4,11.000
+float,4,10.000
+int,4,7.000
+short,4,11.000

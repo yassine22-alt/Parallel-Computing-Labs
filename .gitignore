@@ -1,0 +1,66 @@
+# Compiled executables
+*.exe
+*.out
+*.o
+*.obj
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Build directories
+build/
+dist/
+*.egg-info/
+
+# Generated plots and results
+*.png
+*.jpg
+*.jpeg
+*.pdf
+*.svg
+
+# Temporary files
+*.tmp
+*.log
+*.bak
+
+# Windows specific
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# PowerShell temporary files
+*.ps1~
+
+# Backup files
+*.bak
+*~
+
+# Core dumps
+core
+core.*
+
+# Profiling data
+*.prof
+*.gcda
+*.gcno
+gmon.out
+
+
+TP3.pdf
