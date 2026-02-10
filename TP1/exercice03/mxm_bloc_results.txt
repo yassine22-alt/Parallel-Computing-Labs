@@ -1,0 +1,11 @@
+Block Matrix Multiplication Performance Analysis
+Matrix size: 512 x 512
+
+Block Size, Time (msec), Bandwidth (MB/s), Speedup vs Standard
+   8,     126.00,     32507.94,   1.00x
+  16,     103.00,     39766.99,   1.22x
+  32,     151.00,     27125.83,   0.83x
+  64,     109.00,     37577.98,   1.16x
+ 128,     105.00,     39009.52,   1.20x
+ 256,      85.00,     48188.24,   1.48x
+Standard (no blocking),     103.00,     39766.99,   1.00x

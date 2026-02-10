@@ -1,0 +1,6 @@
+Matrix Multiplication Performance Analysis
+Matrix size: 512 x 512
+
+Version, Time (msec), Bandwidth (MB/s)
+i-j-k (Standard), 247.0000, 16583.00
+i-k-j (Optimized), 62.0000, 66064.52
