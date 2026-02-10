@@ -29,9 +29,7 @@ dist/
 *.egg-info/
 
 # Generated plots and results
-*.png
-*.jpg
-*.jpeg
+
 *.pdf
 *.svg
 
