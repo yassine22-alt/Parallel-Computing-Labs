@@ -53,29 +53,15 @@ I used `MPI_Type_create_struct` to define this as an MPI datatype. The critical 
 2. Global reduction: `MPI_Allreduce` sums all local losses and gradients
 3. Synchronous update: All processes apply the same weight update
 
-The algorithm converged to approximately w[0]≈2.0 and w[1]≈-1.0, matching the true model parameters used to generate the synthetic data (y = 2x₀ - x₁ + noise).
+The algorithm converged to approximately w[0]≈3.0 and w[1]≈-5.0, matching the true model parameters used to generate the synthetic data (y = 3x₀ - 5x₁ + noise).
 
 ### Key Decisions
 
-I moved the `global_loss` declaration outside the training loop to avoid scope issues when reporting final results. I also calculated `local_n` independently on each process rather than broadcasting it, which reduces communication overhead.
+I calculated `local_n` independently on each process rather than broadcasting it, which reduces communication overhead.
 
 The gradient computation uses the standard MSE gradient formula: ∂L/∂w_j = 2/N × Σ(error × x_j). I accumulate these locally, then average after the global reduction.
 
-## Comparative Analysis
 
-| Aspect | Exercise 1 | Exercise 2 |
-|--------|-----------|-----------|
-| **Datatype Complexity** | Vector composition | Struct with padding |
-| **Communication Pattern** | One-time transfer | Iterative synchronization |
-| **Primary MPI Operation** | Type_vector + hvector | Type_create_struct + Allreduce |
-| **Memory Layout** | Non-contiguous → transformation | Contiguous with gaps |
-| **Use Case** | Data reorganization | Data parallelism |
-
-## Performance Considerations
-
-**Exercise 1:** The derived type approach avoids explicit loops for transposition. The data transformation happens during communication, potentially allowing the MPI library to optimize the transfer.
-
-**Exercise 2:** Scaling depends on the computation-to-communication ratio. For small datasets, the overhead of two `MPI_Allreduce` calls per iteration dominates. For large datasets (100k+ samples), the local gradient computation time justifies parallelization. On a cluster like Toubkal, I'd expect near-linear speedup until communication latency becomes significant (likely around 16-32 cores for this problem size).
 
 ## Lessons Learned
 
